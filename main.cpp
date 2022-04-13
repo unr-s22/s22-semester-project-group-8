@@ -36,7 +36,7 @@ int main() {
     // char* buffer2 = nullptr;
     // file.read(buffer2, 1);
     // std::cout << buffer2 << std::endl;
-
+    // file.read()
     std::vector<unsigned char> vect_buffer(std::istreambuf_iterator<char>(file), {});
     for (int x = 0; x < 40; x++) {
         std::cout << vect_buffer[x];
