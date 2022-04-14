@@ -31,16 +31,12 @@ int main() {
     // std::cout << number.num << std::endl;
 
     std::ifstream file("untitled.wav", std::ios::binary | std::ios::in);
-    // short* buffer = nullptr;
-
-    // char* buffer2 = nullptr;
-    // file.read(buffer2, 1);
-    // std::cout << buffer2 << std::endl;
-    // file.read()
-    std::vector<unsigned char> vect_buffer(std::istreambuf_iterator<char>(file), {});
-    for (int x = 0; x < 40; x++) {
-        std::cout << vect_buffer[x];
-    }
-    std::cout << std::endl;
+    
+    wav_header header;
+    char buffer[4] = {"a"};
+    file.read(buffer, 4);
+    header.chunk_ID[0] = buffer[0];
+    std::cout << header.chunk_ID << std::endl;
+    
     return 0;
 }
