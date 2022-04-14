@@ -1,8 +1,5 @@
-struct int_holder {
-    int num;
-    int num2;
-};
-
+#ifndef CODE_WAVHEADER_H
+#define CODE_WAVHEADER_H
 
 struct wav_header {
     char chunk_ID[4];
@@ -21,3 +18,4 @@ struct wav_header {
     int data_bytes;
 };
 
+#endif
