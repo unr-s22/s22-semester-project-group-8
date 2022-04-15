@@ -6,6 +6,7 @@ struct wav_header {
     int chunk_size;
     char format[4];
 
+    char subchunk1_ID[4];
     int subchunk1_size;
     short audio_format;
     short num_channels;
