@@ -8,11 +8,12 @@
 class Wav {
     std::string fileName;
     wav_header header;
-    std::vector<int> data;
+    std::vector<std::vector<float>> data = {{}}; //2d vector
 public:
 
     Wav(std::string file);
     void readFile();
+    void makeFile();
 };
 
 #endif
