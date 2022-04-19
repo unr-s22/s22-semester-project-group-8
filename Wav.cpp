@@ -11,7 +11,7 @@ Wav::Wav(std::string file) {
 void Wav::readFile() {
     std::ifstream file(fileName, std::ios::binary | std::ios::in);
     
-    short* buffer = nullptr;
+    char* buffer = nullptr;
 
     if(file.is_open()){
         file.read((char*)&header, 20); //reading up to subchunk1 size
@@ -19,29 +19,26 @@ void Wav::readFile() {
         file.read((char*)&header + 20 + header.subchunk1_size, 8); //reading subchunk 2
 
 
-        buffer = new short[header.data_bytes]; //to hold data
-        file.read((char*)buffer, header.data_bytes); //ERROR IS HERE
+        buffer = new char[header.data_bytes]; //to hold data
+        file.read((char*)buffer, header.data_bytes); 
         
-
-        
+        std::cout << header.bits_per_sample << std::endl;
 
         if(header.num_channels == 1){
             std::cout << "here" << std::endl;
-            //header.data_bytes / header.block_align
             for(int i = 0; i < header.data_bytes; i++){
                 data[0].push_back((float)buffer[i] / pow(2, header.bits_per_sample - 1)); //add data to vector, second arg in power is max value of the bitrate, makes floats nice
             }
-            std::cout << data[0].size() << std::endl;
         } else {
             data.push_back({}); //adds second dimension to data vector
 
-            for(int i = 0; i < header.data_bytes / header.block_align; i++){
-
-                if(i % 2 == 0){
+            for(int i = 0; i < header.data_bytes; i++){
+                if (i % 2 == 0) {
                     data[0].push_back((float)buffer[i] / pow(2, header.bits_per_sample - 1)); // left ear
                 } else {
                     data[1].push_back((float)buffer[i] / pow(2, header.bits_per_sample - 1)); // right ear
                 }
+                
                 
             }
         }
@@ -63,8 +60,17 @@ void Wav::readFile() {
 void Wav::makeFile() {
     std::ofstream fileOut("out.wav");
     fileOut.write((char*)&header, sizeof(header));
-    for(int i = 0; i < data[0].size(); i++) {
-        short num = data[0].at(i) * pow(2, header.bits_per_sample - 1);
-        fileOut.write((char*)&num, 1);
+    if (header.num_channels == 1) {
+        for(int i = 0; i < data[0].size(); i++) {
+            char num = data[0].at(i) * pow(2, header.bits_per_sample - 1);
+            fileOut.write((char*)&num, 1);
+        }
+    } else {
+        for(int i = 0; i < data[0].size(); i++) {
+            char num = data[0].at(i) * pow(2, header.bits_per_sample - 1);
+            fileOut.write((char*)&num, 1);
+            num = data[1].at(i) * pow(2, header.bits_per_sample - 1);
+            fileOut.write((char*)&num, 1);
+        }
     }
 }

@@ -19,8 +19,4 @@ struct wav_header {
     int data_bytes;
 };
 
-
-struct holder {
-    short num1;
-};
 #endif
