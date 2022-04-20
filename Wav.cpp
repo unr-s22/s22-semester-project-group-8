@@ -10,8 +10,7 @@ Wav::Wav(std::string file) {
 
 void Wav::readFile() {
     std::ifstream file(fileName, std::ios::binary | std::ios::in);
-    
-    char* buffer = nullptr;
+    char* buffer = nullptr; //char because char = 1 byte, 1 chunk of data is 2 hex digits which is also 1 byte
 
     if(file.is_open()){
         file.read((char*)&header, 20); //reading up to subchunk1 size
@@ -20,7 +19,7 @@ void Wav::readFile() {
 
 
         buffer = new char[header.data_bytes]; //to hold data
-        file.read((char*)buffer, header.data_bytes); 
+        file.read((char*)buffer, header.data_bytes); //reads data in
         
         std::cout << header.bits_per_sample << std::endl;
 
@@ -44,21 +43,11 @@ void Wav::readFile() {
         }
         file.close();
     }
-    
-    // ptr = ptr + 1;
-    // std::cout << (char*)ptr << std::endl;
-    // ptr = &header.audio_format;
-    // std::cout << (char*)ptr << std::endl;
-
-    // for(int i = 0; i < sizeof(header); i++) {
-    //     ptr = ptr + 1;
-    //     std::cout << (char*)ptr << std::endl;
-    // }
     delete[] buffer;
 }
 
-void Wav::makeFile() {
-    std::ofstream fileOut("out.wav");
+void Wav::makeFile(std::string file) {
+    std::ofstream fileOut(file);
     fileOut.write((char*)&header, sizeof(header));
     if (header.num_channels == 1) {
         for(int i = 0; i < data[0].size(); i++) {

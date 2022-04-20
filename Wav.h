@@ -13,7 +13,7 @@ public:
 
     Wav(std::string file);
     void readFile();
-    void makeFile();
+    void makeFile(std::string file);
 };
 
 #endif
