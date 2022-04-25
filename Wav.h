@@ -10,10 +10,11 @@ class Wav {
     wav_header header;
     std::vector<std::vector<float>> data = {{}}; //2d vector
 public:
-
     Wav(std::string file);
     void readFile();
-    void makeFile(std::string file);
+    void setData(std::vector<std::vector<float>> newData);
+    std::vector<std::vector<float>> getData();
+    wav_header getHeader();
 };
 
 #endif
