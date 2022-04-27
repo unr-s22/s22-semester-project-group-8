@@ -4,10 +4,6 @@
 #include <cmath>
 #include <vector>
 
-Wav::Wav(std::string file) {
-    fileName = file;
-}
-
 void Wav::setData(std::vector<std::vector<float>> newData) {
     data = newData;
 }
@@ -20,7 +16,7 @@ wav_header Wav::getHeader() {
     return header;
 }
 
-void Wav::readFile() {
+void Wav::readFile(std::string fileName) {
     std::ifstream file(fileName, std::ios::binary | std::ios::in);
     short* buffer = nullptr;
 
@@ -33,23 +29,20 @@ void Wav::readFile() {
         file.read((char*)buffer, header.data_bytes); //reads data in
 
         int maxSize = pow(2, header.bits_per_sample - 1);
+        int upperBound = header.data_bytes / header.block_align * header.num_channels;
 
         if(header.num_channels == 1){
-            for(int i = 0; i < header.data_bytes / header.block_align; i++){
+            for(int i = 0; i < upperBound; i++){
                 data[0].push_back((float)buffer[i] / maxSize); //add data to vector, second arg in power is max value of the bitrate, makes floats nice
             }
-        std::cout << data[0].at(0) * maxSize << std::endl;
-        // input file has ~16032 pieces of data, what is read in has ~8032 pieces of data, exactly half the data bytes
-
-        } else { // FOR STEREO AUDIO, BUILT FOR CHAR
+        
+        } else {
             data.push_back({}); //adds second dimension to data vector
-            for(int i = 0; i < header.data_bytes; i += 2){
-                if ((i / 2) % 2 == 0) {
-                    data[0].push_back((float)buffer[i] / maxSize); // left ear byte 1
-                    data[0].push_back((float)buffer[i + 1] / maxSize); // left ear byte 2
+            for(int i = 0; i < upperBound; i++){
+                if (i % 2 == 0) {
+                    data[0].push_back((float)buffer[i] / maxSize); // left ear bit 1
                 } else {
-                    data[1].push_back((float)buffer[i] / maxSize); // right ear byte 1
-                    data[1].push_back((float)buffer[i + 1] / maxSize); // right ear byte 2
+                    data[1].push_back((float)buffer[i] / maxSize); // right ear bit 1
                 }
             }
         }

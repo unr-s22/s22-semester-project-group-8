@@ -1,14 +1,23 @@
-out: main.o Wav.o WavHeader.o
-	g++ -std=c++11 main.o Dog.o Tail.o -o lab4
+out: main.o IWavModel.o Wav.o WavWriter.o Normalizer.o Reverser.o
+	g++ -std=c++11 -o main.o IWavModel.o Wav.o WavWriter.o Normalizer.o Reverser.o
 
 main.o: main.cpp
-	gcc -std=c++11 main.cpp
+	g++ -std=c++11 main.cpp
 
-Wav.o: Wav.cpp Wav.h
-	gcc -std=c++11 Wav.cpp
+IWavModel.o: IWavModel.cpp
+	g++ -std=c++11 IWavModel.cpp
 
-WavHeader.o: WavHeader.h
-	gcc -std=c++11 WavHeader.h
+Wav.o: Wav.cpp
+	g++ -std=c++11 Wav.cpp
+
+WavWriter.o: WavWriter.cpp
+	g++ -std=c++11 WavWriter.cpp
+
+Normalizer.o: Normalizer.cpp
+	g++ -std=c++11 Normalizer.cpp
+
+Reverser.o: Reverser.cpp
+	g++ -std=c++11 Reverser.cpp
 
 clean:
 	rm *.o

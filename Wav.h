@@ -6,12 +6,10 @@
 #include <vector>
 
 class Wav {
-    std::string fileName;
     wav_header header;
     std::vector<std::vector<float>> data = {{}}; //2d vector
 public:
-    Wav(std::string file);
-    void readFile();
+    void readFile(std::string fileName);
     void setData(std::vector<std::vector<float>> newData);
     std::vector<std::vector<float>> getData();
     wav_header getHeader();

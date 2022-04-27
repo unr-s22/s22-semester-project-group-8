@@ -17,19 +17,14 @@ void WavWriter::writeToFile(Wav wave, std::string fileName) {
     if (header.num_channels == 1) {
         for(int i = 0; i < data[0].size(); i++) {
             short num = data[0].at(i) * maxSize;
-            fileOut.write((char*)&num, 1);
+            fileOut.write((char*)&num, 2);
         }
-
-    } else { //FOR STEREO AUDIO, BUILT FOR CHAR
-        for(int i = 0; i < data[1].size(); i += 2) {
+    } else { 
+        for(int i = 0; i < data[1].size(); i++){
             short num = data[0].at(i) * maxSize;
-            fileOut.write((char*)&num, 1);
-            num = data[0].at(i + 1) * maxSize;
-            fileOut.write((char*)&num, 1);
+            fileOut.write((char*)&num, 2);
             num = data[1].at(i) * maxSize;
-            fileOut.write((char*)&num, 1);
-            num = data[1].at(i + 1) * maxSize;
-            fileOut.write((char*)&num, 1);
+            fileOut.write((char*)&num, 2);
         }
     }
 }

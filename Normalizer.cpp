@@ -5,15 +5,20 @@
 
 
 bool compare(float a, float b) {
-        return std::abs(a) < std::abs(b);
+    return std::abs(a) < std::abs(b);
 }
 
 std::vector<std::vector<float>> Normalizer::normalizeData(std::vector<std::vector<float>> data) {
     float scaleVal = 0;
-    std::cout << data[0].at(0) << std::endl;
-    for (int i = 0; i < data.size(); i++){
-        scaleVal = abs(*std::max_element(data[i].begin(), data[i].end(), compare));
+    if (data.size() == 2) {
+        for (int i = 0; i < data.size(); i++){
+            scaleVal = std::abs(*std::max_element(data[i].begin(), data[i].end(), compare));
+        }
+    } else {
+        scaleVal = std::abs(*std::max_element(data[0].begin(), data[0].end(), compare));
+        std::cout << std::abs(*std::max_element(data[0].begin(), data[0].end(), compare)) << std::endl;
     }
+    
     std::cout << scaleVal << std::endl;
     scaleVal = 1 / scaleVal;
     for (int i = 0; i < data.size(); i++){
