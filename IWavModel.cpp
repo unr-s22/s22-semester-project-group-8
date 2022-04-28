@@ -14,3 +14,7 @@ void IWavModel::writeFile(std::string outFile) {
 std::vector<std::vector<float>> IWavModel::getData() {
     return wave.getData();
 }
+
+void IWavModel::setData(std::vector<std::vector<float>> newData) {
+    wave.setData(newData);
+}

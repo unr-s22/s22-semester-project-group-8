@@ -11,6 +11,7 @@ class IWavModel {
 public:
     void readFile(std::string newFile);
     void writeFile(std::string outFile);
+    void setData(std::vector<std::vector<float>> newData);
     std::vector<std::vector<float>> getData();
 };
 

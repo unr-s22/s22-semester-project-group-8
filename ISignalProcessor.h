@@ -9,8 +9,8 @@ class ISignalProcessor {
     Reverser rev;
     Normalizer norm;
 public:
-    void reverse(std::vector<std::vector<float>> data);
-    void normalize(std::vector<std::vector<float>> data);
+    std::vector<std::vector<float>> reverse(std::vector<std::vector<float>> data);
+    std::vector<std::vector<float>> normalize(std::vector<std::vector<float>> data);
 };
 
 #endif

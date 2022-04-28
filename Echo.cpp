@@ -1,10 +1,6 @@
 //get input
 //check if it works or not
 
-
-
-
-
 #include "Echo.h"
 #include <math.h>
 
