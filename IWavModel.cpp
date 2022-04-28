@@ -10,3 +10,7 @@ void IWavModel::readFile(std::string newFile) {
 void IWavModel::writeFile(std::string outFile) {
     wavW.writeToFile(wave, outFile);
 }
+
+std::vector<std::vector<float>> IWavModel::getData() {
+    return wave.getData();
+}

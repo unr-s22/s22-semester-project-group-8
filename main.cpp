@@ -1,8 +1,5 @@
-#include "Wav.h"
-#include "WavWriter.h"
-#include "Reverser.h"
-#include "Normalizer.h"
 #include "IWavModel.h"
+#include "ISignalProcessor.h"
 #include <iostream>
 #include <fstream>
 #include <algorithm>
@@ -13,10 +10,6 @@ int main() {
     IWavModel WaveModel;
     WaveModel.readFile(file);
     WaveModel.writeFile("out.wav");
-    // Reverser rev;
-    // Normalizer norm;
-    // wave.setData(rev.reverseData(wave.getData()));
-    // wave.setData(norm.normalizeData(wave.getData()));
     
     return 0;
 }
