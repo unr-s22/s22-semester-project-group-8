@@ -1,5 +1,5 @@
 #include "IWavModel.h"
-#include "ISignalProcessor.h"
+// #include "ISignalProcessor.h"
 #include <iostream>
 #include <fstream>
 #include <algorithm>
@@ -9,6 +9,7 @@ int main() {
 
     IWavModel WaveModel;
     WaveModel.readFile(file);
+    std::cout << WaveModel.getData()[0].at(0) << std::endl;
     WaveModel.writeFile("out.wav");
     
     return 0;
