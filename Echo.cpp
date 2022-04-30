@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+//get input
+//check if it works or not
+
+>>>>>>> refs/remotes/origin/main
 #include "Echo.h"
 #include <math.h>
 

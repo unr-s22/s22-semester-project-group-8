@@ -2,10 +2,10 @@
 #include "Normalizer.h"
 #include "ISignalProcessor.h"
 
-void ISignalProcessor::normalize(std::vector<std::vector<float>> data) {
-    norm.normalizeData(data);
+std::vector<std::vector<float>> ISignalProcessor::normalize(std::vector<std::vector<float>> data) {
+    return norm.normalizeData(data);
 }
 
-void ISignalProcessor::reverse(std::vector<std::vector<float>> data) {
-    rev.reverseData(data);
+std::vector<std::vector<float>> ISignalProcessor::reverse(std::vector<std::vector<float>> data) {
+    return rev.reverseData(data);
 }
