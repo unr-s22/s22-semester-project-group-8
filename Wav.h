@@ -7,12 +7,14 @@
 
 class Wav {
     wav_header header;
+    std::string fileName;
     std::vector<std::vector<float>> data = {{}}; //2d vector
 public:
-    void readFile(std::string fileName);
+    void readFile(std::string filePath);
     void setData(std::vector<std::vector<float>> newData);
     std::vector<std::vector<float>> getData();
     wav_header getHeader();
+    std::string getName();
 };
 
 #endif

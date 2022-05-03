@@ -16,8 +16,13 @@ wav_header Wav::getHeader() {
     return header;
 }
 
-void Wav::readFile(std::string fileName) {
-    std::ifstream file(fileName, std::ios::binary | std::ios::in);
+std::string Wav::getName() {
+    return fileName;
+}
+
+void Wav::readFile(std::string filePath) {
+    fileName = filePath;
+    std::ifstream file(filePath, std::ios::binary | std::ios::in);
     short* buffer = nullptr;
 
     if(file.is_open()){

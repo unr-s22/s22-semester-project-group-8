@@ -1,19 +1,18 @@
 #ifndef CODE_CONTROLLER_H
 #define CODE_CONTROLLER_H
 
-#include "IWavModel.h"
+#include "WavModel.h"
 #include "ISignalProcessor.h"
 #include <iostream>
 
 class Controller {
-    IWavModel WavModel;
-    ISignalProcessor SignalProcessor;
+    WavModel model;
 public:
-    void reverse();
-    void normalize();
+    void effect(std::string name);
+
     void readFile(std::string newFile);
     void writeFile(std::string outFile);
-    
+    std::string getAttributes();
 };
 
 #endif

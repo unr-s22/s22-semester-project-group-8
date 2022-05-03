@@ -1,19 +1,27 @@
 #include "Controller.h"
-#include "IWavModel.h"
+#include "WavModel.h"
 #include "ISignalProcessor.h"
+#include "Reverser.h"
+#include "Normalizer.h"
 
 void Controller::readFile(std::string newFile) {
-    WavModel.readFile(newFile);
+    model.readFile(newFile);
 }
 
 void Controller::writeFile(std::string outFile) {
-    WavModel.writeFile(outFile);
+    model.writeFile(outFile);
 }
 
-void Controller::reverse() {
-    WavModel.setData(SignalProcessor.reverse(WavModel.getData()));
+std::string Controller::getAttributes() {
+    return model.getAttributes();
 }
 
-void Controller::normalize() {
-    WavModel.setData(SignalProcessor.normalize(WavModel.getData()));
+void Controller::effect(std::string name) {
+    if (name == "reverse") {
+        ISignalProcessor *processor = new Reverser();
+        model.setData(processor->applyEffect(model.getData()));
+    } else if (name == "normalize") {
+        ISignalProcessor *processor = new Normalizer();
+        model.setData(processor->applyEffect(model.getData()));
+    }
 }
