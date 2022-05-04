@@ -1,5 +1,4 @@
-# s22-semester-project-group-8
-s22-semester-project-group-8 created by GitHub Classroom
+# Instructions:
 
 To launch the GUI, open the program in Qt creator by opening the Audio_Processing_GUI.pro file. 
 Go to build in the toolbar and click run and the GUI should pop up.
