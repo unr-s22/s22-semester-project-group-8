@@ -29,6 +29,8 @@ private slots:
 
     void on_back_2_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::WaveFileEditor *ui;
     Controller control;

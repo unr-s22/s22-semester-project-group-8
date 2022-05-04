@@ -1,0 +1,11 @@
+release/WaveFileEditor.o
+release/main.o
+release/Wav.o
+release/WavWriter.o
+release/WavModel.o
+release/Reverser.o
+release/Normalizer.o
+release/Controller.o
+release/Echo.o
+release/LowPass.o
+release/moc_WaveFileEditor.o

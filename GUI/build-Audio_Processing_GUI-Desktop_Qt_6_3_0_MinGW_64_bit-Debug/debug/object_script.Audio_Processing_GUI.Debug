@@ -1,0 +1,11 @@
+debug/WaveFileEditor.o
+debug/main.o
+debug/Wav.o
+debug/WavWriter.o
+debug/WavModel.o
+debug/Reverser.o
+debug/Normalizer.o
+debug/Controller.o
+debug/Echo.o
+debug/LowPass.o
+debug/moc_WaveFileEditor.o

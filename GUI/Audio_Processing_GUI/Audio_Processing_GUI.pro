@@ -16,7 +16,9 @@ SOURCES += \
     WavModel.cpp \
     Reverser.cpp \
     Normalizer.cpp \
-    Controller.cpp
+    Controller.cpp \
+    Echo.cpp \
+    LowPass.cpp
 
 
 HEADERS += \
@@ -28,7 +30,9 @@ HEADERS += \
     Reverser.h \
     Normalizer.h \
     ISignalProcessor.h \
-    Controller.h
+    Controller.h \
+    Echo.h \
+    LowPass.h
 
 
 FORMS += \

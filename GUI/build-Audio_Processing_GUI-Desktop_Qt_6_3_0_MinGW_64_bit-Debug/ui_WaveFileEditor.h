@@ -46,6 +46,7 @@ public:
     QPushButton *back_2;
     QLabel *curren_file_2;
     QLabel *welcome_2;
+    QPushButton *pushButton;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *WaveFileEditor)
@@ -272,19 +273,26 @@ public:
         back_2->setGeometry(QRect(850, 450, 110, 50));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush2);
-        palette4.setBrush(QPalette::Active, QPalette::Button, brush3);
-        palette4.setBrush(QPalette::Active, QPalette::Light, brush4);
-        palette4.setBrush(QPalette::Active, QPalette::Midlight, brush5);
-        palette4.setBrush(QPalette::Active, QPalette::Dark, brush6);
-        palette4.setBrush(QPalette::Active, QPalette::Mid, brush7);
+        palette4.setBrush(QPalette::Active, QPalette::Button, brush);
+        QBrush brush21(QColor(52, 52, 52, 255));
+        brush21.setStyle(Qt::SolidPattern);
+        palette4.setBrush(QPalette::Active, QPalette::Light, brush21);
+        QBrush brush22(QColor(43, 43, 43, 255));
+        brush22.setStyle(Qt::SolidPattern);
+        palette4.setBrush(QPalette::Active, QPalette::Midlight, brush22);
+        QBrush brush23(QColor(17, 17, 17, 255));
+        brush23.setStyle(Qt::SolidPattern);
+        palette4.setBrush(QPalette::Active, QPalette::Dark, brush23);
+        QBrush brush24(QColor(23, 23, 23, 255));
+        brush24.setStyle(Qt::SolidPattern);
+        palette4.setBrush(QPalette::Active, QPalette::Mid, brush24);
         palette4.setBrush(QPalette::Active, QPalette::Text, brush2);
         palette4.setBrush(QPalette::Active, QPalette::BrightText, brush2);
         palette4.setBrush(QPalette::Active, QPalette::ButtonText, brush2);
         palette4.setBrush(QPalette::Active, QPalette::Base, brush8);
-        palette4.setBrush(QPalette::Active, QPalette::Window, brush9);
+        palette4.setBrush(QPalette::Active, QPalette::Window, brush);
         palette4.setBrush(QPalette::Active, QPalette::Shadow, brush8);
-        palette4.setBrush(QPalette::Active, QPalette::Highlight, brush10);
-        palette4.setBrush(QPalette::Active, QPalette::AlternateBase, brush11);
+        palette4.setBrush(QPalette::Active, QPalette::AlternateBase, brush23);
         palette4.setBrush(QPalette::Active, QPalette::ToolTipBase, brush12);
         palette4.setBrush(QPalette::Active, QPalette::ToolTipText, brush8);
         palette4.setBrush(QPalette::Inactive, QPalette::WindowText, brush13);
@@ -299,23 +307,21 @@ public:
         palette4.setBrush(QPalette::Inactive, QPalette::Base, brush17);
         palette4.setBrush(QPalette::Inactive, QPalette::Window, brush17);
         palette4.setBrush(QPalette::Inactive, QPalette::Shadow, brush18);
-        palette4.setBrush(QPalette::Inactive, QPalette::Highlight, brush19);
         palette4.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush20);
         palette4.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush1);
         palette4.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush13);
-        palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush6);
-        palette4.setBrush(QPalette::Disabled, QPalette::Button, brush3);
-        palette4.setBrush(QPalette::Disabled, QPalette::Light, brush4);
-        palette4.setBrush(QPalette::Disabled, QPalette::Midlight, brush5);
-        palette4.setBrush(QPalette::Disabled, QPalette::Dark, brush6);
-        palette4.setBrush(QPalette::Disabled, QPalette::Mid, brush7);
-        palette4.setBrush(QPalette::Disabled, QPalette::Text, brush6);
+        palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush23);
+        palette4.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette4.setBrush(QPalette::Disabled, QPalette::Light, brush21);
+        palette4.setBrush(QPalette::Disabled, QPalette::Midlight, brush22);
+        palette4.setBrush(QPalette::Disabled, QPalette::Dark, brush23);
+        palette4.setBrush(QPalette::Disabled, QPalette::Mid, brush24);
+        palette4.setBrush(QPalette::Disabled, QPalette::Text, brush23);
         palette4.setBrush(QPalette::Disabled, QPalette::BrightText, brush2);
-        palette4.setBrush(QPalette::Disabled, QPalette::ButtonText, brush6);
-        palette4.setBrush(QPalette::Disabled, QPalette::Base, brush9);
-        palette4.setBrush(QPalette::Disabled, QPalette::Window, brush9);
+        palette4.setBrush(QPalette::Disabled, QPalette::ButtonText, brush23);
+        palette4.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette4.setBrush(QPalette::Disabled, QPalette::Window, brush);
         palette4.setBrush(QPalette::Disabled, QPalette::Shadow, brush8);
-        palette4.setBrush(QPalette::Disabled, QPalette::Highlight, brush19);
         palette4.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush20);
         palette4.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush1);
         palette4.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush13);
@@ -335,6 +341,10 @@ public:
         welcome_2->setGeometry(QRect(220, 90, 520, 50));
         welcome_2->setFont(font3);
         welcome_2->setAlignment(Qt::AlignCenter);
+        pushButton = new QPushButton(screen_2);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(0, 460, 131, 41));
+        pushButton->setFont(font2);
         WaveFileEditor->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(WaveFileEditor);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -378,6 +388,7 @@ public:
         back_2->setText(QCoreApplication::translate("WaveFileEditor", "Back", nullptr));
         curren_file_2->setText(QCoreApplication::translate("WaveFileEditor", "Current File", nullptr));
         welcome_2->setText(QCoreApplication::translate("WaveFileEditor", "Choose Audio Process", nullptr));
+        pushButton->setText(QCoreApplication::translate("WaveFileEditor", "Restart Program", nullptr));
     } // retranslateUi
 
 };

@@ -26,7 +26,7 @@ std::string WavModel::getAttributes() {
 
     std::string name = "";
     for (auto &character: wave.getName()) {
-        if (character == '/'){ // also check for '\'
+        if (character == '/'){
             name = "";
         } else {
             name += character;
@@ -41,6 +41,7 @@ std::string WavModel::getAttributes() {
     } else {
         attributes << "Format: Stereo " << std::endl;
     }
+
     wav_header header = wave.getHeader();
     float length = ((float)header.data_bytes) / ((header.sample_rate * header.num_channels * header.bits_per_sample) / 8);
     if (length > 60) {
